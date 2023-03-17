@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Config</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Trading Assistant</h1>
+    </header>
+    <main>
+      <a href="{{ url_for('index') }}">Home</a>
+
+      <form method="POST" action="{{ url_for('config') }}">
+        <label for="api_key">API Key:</label>
+        <input type="text" id="api_key" name="api_key">
+
+        <label for="api_secret">API Secret:</label>
+        <input type="text" id="api_secret" name="api_secret">
+
+        <label for="exchange">Exchange:</label>
+        <select id="exchange" name="exchange">
+          {% for exchange in exchanges %}
+          <option value="{{ exchange }}">{{ exchange }}</option>
+          {% endfor %}
+        </select>
+
+        <input type="submit" value="Submit">
+      </form>
+    </main>
+    <footer></footer>
+  </body>
+</html>

@@ -16,17 +16,12 @@ class ConfigHandler:
         self.db_handler.create_table('config', {'key': 'text', 'value': 'text'})
 
     def set_config(self, configs):
-        for key, value in configs.items():
-            print('|'+value+'|')
-            if value != '':
-                self.db_handler.insert('config', {'key': key, 'value': value})
-            else:
-                for key_def, value_def in self.default_config.items():
+        if configs['api_key'].strip() == '' or configs['api_secret'].strip() == '':
+            for key_def, value_def in self.default_config.items():
                     if not self.db_handler.select('config', where=f'key="{key_def}"'):
                         self.db_handler.insert('config', {'key': key_def, 'value': value_def})
-                break
-            #if value != '':
-                #if not self.db_handler.select_data('config', where=f'key="{key}"'):
-                    #self.db_handler.insert_data('config', {'key': key, 'value': value})
-            #else:
-                #self.db_handler.insert_data('config', {'key': key, 'value': self.default_config[key]})
+        else:
+            for key, value in configs.items():
+            #if not self.db_handler.select('config', where=f'key="{key}"')
+                self.db_handler.insert('config', {'key': key, 'value': value})
+            

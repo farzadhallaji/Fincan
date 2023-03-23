@@ -33,9 +33,15 @@ class SQLiteHandler:
         query = f'INSERT INTO {table} ({columns}) VALUES ({placeholders})'
         self.execute(query, tuple(data.values()))
         
+        
     def select(self, table, columns='*', where=None):
         query = f'SELECT {columns} FROM {table}'
         if where:
             query += f' WHERE {where}'
         cursor = self.execute(query)
         return cursor.fetchall()
+    
+    def update(self, table, data, where):
+        columns = ', '.join([f'{col}=?' for col in data.keys()])
+        query = f'UPDATE {table} SET {columns} WHERE {where}'
+        self.execute(query, tuple(data.values()))

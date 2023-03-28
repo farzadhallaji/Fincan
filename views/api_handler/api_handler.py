@@ -45,4 +45,3 @@ def update_config(exchange, key, secret):
 Base.metadata.create_all(engine)
 
 # Insert default api key
-# insert_config('bybit', 'YWCeoBdf0Y2LqL59TQ', 'R7e2lbwDKXqzlR3bk1wckfmjdCI6vSIfYH2S')

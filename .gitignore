@@ -1,0 +1,28 @@
+# Python virtual environments
+venv/
+ENV/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# Flask cache
+instance/
+
+# Other files and directories to ignore
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+
+ignore

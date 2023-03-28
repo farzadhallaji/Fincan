@@ -85,8 +85,8 @@
     
         <label for="timeframe">Time Frame:</label>
         <select id="timeframe" name="timeframe">
-            {% for timeframe in timeframes %}
-                <option value="{{ timeframe }}">{{ timeframe }}</option>
+            {% for timeframe in TFs %}
+                <option value="{{ timeframe }}">{{ TFs[timeframe] }}</option>
             {% endfor %}
         </select>
     
